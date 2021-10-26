@@ -1,0 +1,53 @@
+ALGORITHM ALGO_CHEKPOINT2
+VAR
+    T,K:arary of integer[100];
+    j,i,n,m:integer;
+    sum_diferent,sum_egaux:integer:=0;
+BEGIN
+    write("donner la taille de tableau de 1ere set ");
+    read(n);
+    write("donner la taille de tableau de 2eme set ");
+    read(m);
+    // lire tableau
+    FOR i FROM 1 TO n STEP step  DO
+        write("T[",i,"]");
+        read(T[i]);
+    END_FOR
+    FOR i FROM 1 TO m STEP step  DO
+        write("K[",i,"]");
+        read(K[i]);
+    END_FOR
+    //affichage tableau
+    FOR i FROM 1 TO n STEP step  DO
+        write(T[i]);
+        
+    END_FOR
+    FOR i FROM 1 TO m STEP step  DO
+        write(K[i]);
+    END_FOR
+    // calcul somme des diffrent et des egaux des tableau T et K
+    
+    FOR i FROM 1 TO n STEP step DO
+        FOR j FROM 1 TO m STEP step do
+            IF (T[i]!=K[j]) THEN
+                sum_diferent+=T[i];
+            ELSE 
+                sum_egaux+=T[i];
+            END_IF
+        END_FOR    
+
+    END_FOR
+    FOR i FROM 1 TO m STEP step DO
+        FOR j FROM 1 TO n STEP step do
+            IF (K[i]!=T[j]) THEN
+                sum_diferent+=K[i];
+            ELSE 
+                sum_egaux+=K[i];
+            END_IF
+        END_FOR    
+
+    END_FOR
+    
+    write("la somme de diffrent element entre le tab T et le tab K est :",sum_diferent);
+    write("la somme des egaux element entre le tab T et le tab K est :",sum_egaux);
+END

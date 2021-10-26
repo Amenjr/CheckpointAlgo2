@@ -1,0 +1,40 @@
+ALGORITHM ALGO_CHEKPOINT2
+VAR
+    htable1: HASH_TABLE<INTEGER,INTEGER>;
+    htable2: HASH_TABLE<INTEGER,INTEGER>;
+    sum_diferent,sum_egaux:INTEGER:=0;
+    i:INTEGER;
+BEGIN
+// remplissage hashtable 1
+    htable1.insert(0,3);
+    htable1.insert(1,1);
+    htable1.insert(2,7);
+    htable1.insert(3,9);
+// remplissage hashtable 2
+    htable2.insert(0,2);
+    htable2.insert(1,4);
+    htable2.insert(2,1);
+    htable2.insert(3,9);
+    htable2.insert(4,3);
+// calcul somme des diffrent et des egaux des tableau T et K
+    FOR i FROM 0 TO htable1.length DO
+        FOR j FROM 0 TO htable2.length DO
+            IF (htable1[i].values==htable2[j].values) THEN
+                sum_egaux+=htable1[i].values;
+            ELSE
+                sum_diferent+=htable1[i].values;
+            END_IF
+        END_FOR
+    END_FOR
+    FOR i FROM 0 TO htable2.length DO
+        FOR j FROM 0 TO htable1.length DO
+            IF (htable2[i].values==htable1[j].values) THEN
+                sum_egaux+=htable2[i].values;
+            ELSE
+                sum_diferent+=htable2[i].values;
+        END_IF
+    END_FOR
+    write("la somme de diffrent element entre le tab T et le tab K est :",sum_diferent);
+    write("la somme des egaux element entre le tab T et le tab K est :",sum_egaux);
+    
+END
